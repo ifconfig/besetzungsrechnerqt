@@ -9,7 +9,7 @@ VERSION_MINOR = 1
 VERSION_BUILD = 1
 
 # The application version
-VERSION = 0.4.0.1
+VERSION = 0.0.1
 QMAKE_TARGET_COMPANY = company
 QMAKE_TARGET_PRODUCT = product
 QMAKE_TARGET_DESCRIPTION = description
@@ -18,7 +18,7 @@ QMAKE_TARGET_COPYRIGHT = copyright
 # Define the preprocessor macro to get the application version in our application.
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,9 +27,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    dbmanager.cpp
 
 HEADERS  += mainwindow.h \
-    general.h
+    general.h \
+    dbmanager.h
 
 FORMS    += mainwindow.ui

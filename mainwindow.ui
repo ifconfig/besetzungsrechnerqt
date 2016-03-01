@@ -135,6 +135,13 @@
     </property>
     <addaction name="action_ber"/>
    </widget>
+   <widget class="QMenu" name="menuDatei_2">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="actionDatenbank_ffnen"/>
+   </widget>
+   <addaction name="menuDatei_2"/>
    <addaction name="menuDatei"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -149,6 +156,11 @@
   <action name="action_ber">
    <property name="text">
     <string>Über BesetzungsrechnerQt ...</string>
+   </property>
+  </action>
+  <action name="actionDatenbank_ffnen">
+   <property name="text">
+    <string>Datenbank öffnen</string>
    </property>
   </action>
  </widget>
