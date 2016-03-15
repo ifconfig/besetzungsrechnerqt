@@ -18,6 +18,8 @@ QMAKE_TARGET_COPYRIGHT = copyright
 # Define the preprocessor macro to get the application version in our application.
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
+CONFIG += c++11
+
 QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -28,10 +30,23 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    dbmanager.cpp
+    dbmanager.cpp \
+    kamerad.cpp \
+    qualification.cpp \
+    vehicle.cpp \
+    testdbwindow.cpp \
+    qualificationsliderwidget.cpp \
+    qualificationlist.cpp
 
 HEADERS  += mainwindow.h \
     general.h \
-    dbmanager.h
+    dbmanager.h \
+    kamerad.h \
+    qualification.h \
+    vehicle.h \
+    testdbwindow.h \
+    qualificationsliderwidget.h \
+    qualificationlist.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    testdbwindow.ui

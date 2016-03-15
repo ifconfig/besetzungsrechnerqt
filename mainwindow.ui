@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1124</width>
+    <width>1347</width>
     <height>710</height>
    </rect>
   </property>
@@ -14,109 +14,70 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTableView" name="tableView">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>441</width>
-      <height>281</height>
+      <x>14</x>
+      <y>13</y>
+      <width>1101</width>
+      <height>631</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Verfügbare Kameraden</string>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableView_2">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>30</y>
-      <width>441</width>
-      <height>281</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>10</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Fahrzeugbesetzungen</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>340</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Nicht eingesetzte Kameraden</string>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableView_3">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>360</y>
-      <width>441</width>
-      <height>281</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableView_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>360</y>
-      <width>441</width>
-      <height>281</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>340</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Verfügbare Fahrzeuge</string>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0">
+      <widget class="QTableView" name="comradsTable"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Fahrzeugbesetzungen</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QTableView" name="tableView_2"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Nicht eingesetzte Kameraden</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Verfügbare Kameraden</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QTableView" name="tableView_3"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QTableView" name="vehicleTable"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Verfügbare Fahrzeuge</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>1040</x>
-      <y>250</y>
-      <width>75</width>
-      <height>23</height>
+      <x>1140</x>
+      <y>40</y>
+      <width>191</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Kameraden und 
+Fahrzeuge auswählen</string>
     </property>
    </widget>
   </widget>
@@ -125,8 +86,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1124</width>
-     <height>21</height>
+     <width>1347</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei">
@@ -141,7 +102,14 @@
     </property>
     <addaction name="actionDatenbank_ffnen"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionTestdatenbank_erzeugen"/>
+   </widget>
    <addaction name="menuDatei_2"/>
+   <addaction name="menuTools"/>
    <addaction name="menuDatei"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -161,6 +129,14 @@
   <action name="actionDatenbank_ffnen">
    <property name="text">
     <string>Datenbank öffnen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionTestdatenbank_erzeugen">
+   <property name="text">
+    <string>Testdatenbank erzeugen ...</string>
    </property>
   </action>
  </widget>
