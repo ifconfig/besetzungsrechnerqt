@@ -36,6 +36,8 @@ private slots:
 
 private:
   Ui::TestDbWindow *ui;
+  QJsonObject loadConfObject();
+  void createQualificationSliders(QJsonObject configurationObject);
 };
 
 #endif // TESTDBWINDOW_H

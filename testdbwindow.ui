@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>982</width>
-    <height>962</height>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,11 +37,10 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>424</width>
-               <height>752</height>
+               <width>447</width>
+               <height>541</height>
               </rect>
              </property>
-             <zorder>groupBox_3</zorder>
             </widget>
            </widget>
           </item>
@@ -49,13 +48,13 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QGroupBox" name="groupBox_qualifications">
          <property name="title">
           <string>Personal</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="5" column="0">
-           <widget class="QScrollArea" name="scrollArea">
+           <widget class="QScrollArea" name="scrollArea_qualifications">
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
@@ -64,8 +63,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>424</width>
-               <height>692</height>
+               <width>447</width>
+               <height>494</height>
               </rect>
              </property>
             </widget>
@@ -158,7 +157,7 @@
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
