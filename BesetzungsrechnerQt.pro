@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     vehicle.cpp \
     testdbwindow.cpp \
     qualificationsliderwidget.cpp \
-    qualificationlist.cpp
+    qualificationlist.cpp \
+    vehiclelist.cpp
 
 HEADERS  += mainwindow.h \
     general.h \
@@ -46,7 +47,8 @@ HEADERS  += mainwindow.h \
     vehicle.h \
     testdbwindow.h \
     qualificationsliderwidget.h \
-    qualificationlist.h
+    qualificationlist.h \
+    vehiclelist.h
 
 FORMS    += mainwindow.ui \
     testdbwindow.ui

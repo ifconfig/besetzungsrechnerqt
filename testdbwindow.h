@@ -17,6 +17,7 @@
 
 #include "qualificationsliderwidget.h"
 #include "qualificationlist.h"
+#include "vehiclelist.h"
 
 
 namespace Ui {
@@ -38,6 +39,7 @@ private:
   Ui::TestDbWindow *ui;
   QJsonObject loadConfObject();
   void createQualificationSliders(QJsonObject configurationObject);
+  void createVehicleSpinBoxes(QJsonObject configurationObject);
 };
 
 #endif // TESTDBWINDOW_H

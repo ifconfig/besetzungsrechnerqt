@@ -2,14 +2,21 @@
 #define VEHICLE_H
 
 #include <QList>
+#include <QJsonObject>
 #include "qualification.h"
 
 class Vehicle
 {
 public:
-  Vehicle();
+  Vehicle(QJsonObject vehicleObj);
+  QString name() const;
+
+  int numberSeats() const;
+
 private:
-  QList<Qualification> m_positions;
+  QList<QSharedPointer<Qualification> > m_positions;
+  QString m_name;
+  int m_numberSeats;
 };
 
 #endif // VEHICLE_H

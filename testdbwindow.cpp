@@ -17,6 +17,7 @@ void TestDbWindow::on_pushButton_clicked()
 {
     QJsonObject configurationObject = loadConfObject();
     createQualificationSliders(configurationObject);
+    createVehicleSpinBoxes(configurationObject);
 }
 
 QJsonObject TestDbWindow::loadConfObject()
@@ -71,5 +72,23 @@ void TestDbWindow::createQualificationSliders(QJsonObject configurationObject)
                 sliderList.at(depIndex)->setDependency(sliderList.at(masterIndex));
               }
           }
-      }
+    }
+}
+
+void TestDbWindow::createVehicleSpinBoxes(QJsonObject configurationObject)
+{
+    QWidget* spinBoxArea = new QWidget(ui->groupBox_vehicles);
+    spinBoxArea->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
+    spinBoxArea->setLayout(new QVBoxLayout(spinBoxArea));
+    ui->scrollArea_vehicles->setWidget(spinBoxArea);
+
+    QJsonArray vehiclesArray = configurationObject["vehicles"].toArray();
+    VehicleList* vehicleList = new VehicleList(vehiclesArray);
+
+    foreach (QSharedPointer<Vehicle> vehicle, vehicleList->vehicles()) {
+        QString vehicleName = vehicle->name();
+        vehicleName.append(" ("+QString::number(vehicle->numberSeats())+")");
+        QLabel* vehicleNameLabel = new QLabel(vehicleName, spinBoxArea);
+        spinBoxArea->layout()->addWidget(vehicleNameLabel);
+    }
 }
