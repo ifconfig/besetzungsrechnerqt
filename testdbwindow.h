@@ -16,6 +16,7 @@
 #include <QJsonObject>
 
 #include "qualificationsliderwidget.h"
+#include "vehiclespinboxwidget.h"
 #include "qualificationlist.h"
 #include "vehiclelist.h"
 

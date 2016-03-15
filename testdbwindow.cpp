@@ -86,9 +86,7 @@ void TestDbWindow::createVehicleSpinBoxes(QJsonObject configurationObject)
     VehicleList* vehicleList = new VehicleList(vehiclesArray);
 
     foreach (QSharedPointer<Vehicle> vehicle, vehicleList->vehicles()) {
-        QString vehicleName = vehicle->name();
-        vehicleName.append(" ("+QString::number(vehicle->numberSeats())+")");
-        QLabel* vehicleNameLabel = new QLabel(vehicleName, spinBoxArea);
-        spinBoxArea->layout()->addWidget(vehicleNameLabel);
+        spinBoxArea->layout()->addWidget(new VehicleSpinBoxWidget(vehicle, spinBoxArea));
+
     }
 }
