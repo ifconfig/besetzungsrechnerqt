@@ -4,6 +4,7 @@
 #include <QList>
 #include <QJsonArray>
 #include <QJsonValue>
+#include <QHash>
 #include "vehicle.h"
 
 class VehicleList
@@ -11,10 +12,13 @@ class VehicleList
 public:
     VehicleList(QJsonArray vehiclesArray);
 
-    QList<QSharedPointer<Vehicle> > vehicles() const;
+    QHash<QString, QSharedPointer<Vehicle> > vehicles() const;
+
+    QHash<QString, int>* vehicleNumber();
 
 private:
-    QList <QSharedPointer<Vehicle> > m_vehicles;
+    QHash<QString, QSharedPointer<Vehicle> > m_vehicles;
+    QHash<QString, int> m_vehicleNumber;
 };
 
 #endif // VEHICLELIST_H

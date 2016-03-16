@@ -2,10 +2,12 @@
 
 VehicleSpinBoxWidget::VehicleSpinBoxWidget(QSharedPointer<Vehicle> vehicle, QWidget *parent) : QWidget(parent)
 {
+  m_vehicle = vehicle;
+
     setLayout(new QHBoxLayout());
-    QSpinBox* vehicleSpinBox = new QSpinBox(this);
-    vehicleSpinBox->setRange(0,10000);
-    layout()->addWidget(vehicleSpinBox);
+    m_vehicleSpinBox = new QSpinBox(this);
+    m_vehicleSpinBox->setRange(0,10000);
+    layout()->addWidget(m_vehicleSpinBox);
 
     QString vehicleName = vehicle->name();
     vehicleName.append(" ("+QString::number(vehicle->numberSeats())+")");
@@ -14,4 +16,14 @@ VehicleSpinBoxWidget::VehicleSpinBoxWidget(QSharedPointer<Vehicle> vehicle, QWid
 
     QSpacerItem* spacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
     layout()->addItem(spacer);
+}
+
+QSharedPointer<Vehicle> VehicleSpinBoxWidget::vehicle() const
+{
+    return m_vehicle;
+}
+
+QSpinBox *VehicleSpinBoxWidget::vehicleSpinBox() const
+{
+  return m_vehicleSpinBox;
 }

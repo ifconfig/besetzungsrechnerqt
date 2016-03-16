@@ -9,6 +9,7 @@
 
 #include <QFile>
 #include <QHash>
+#include <QList>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QString>
@@ -20,6 +21,7 @@
 #include "vehiclespinboxwidget.h"
 #include "qualificationlist.h"
 #include "vehiclelist.h"
+#include "comrad.h"
 
 
 namespace Ui {
@@ -37,11 +39,19 @@ public:
 private slots:
   void on_pushButton_clicked();
 
+  void on_pushButton_2_clicked();
+
 private:
   Ui::TestDbWindow *ui;
   QJsonObject loadConfObject();
+  QSharedPointer<QualificationList> m_qualiList;
+  QHash<QString, QualificationSliderWidget *> m_sliderHashList;
+
+  QSharedPointer<VehicleList> m_vehicleList;
+  QHash<QString, VehicleSpinBoxWidget*> m_vehicleSpinBoxList;
   void createQualificationSliders(QJsonObject configurationObject);
   void createVehicleSpinBoxes(QJsonObject configurationObject);
+  QList<Comrad> generateComradList(int numberComrads, QSharedPointer<QualificationList> qualiList);
 };
 
 #endif // TESTDBWINDOW_H

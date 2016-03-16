@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>982</width>
-    <height>502</height>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,38 +15,70 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="0">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>3. Daten generieren</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>generieren</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>1. Konfigurationsdatei auswählen</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>öffnen ...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item row="1" column="0">
      <widget class="QGroupBox" name="groupBox_2">
       <property name="title">
-       <string>2. Auswahl vornehmen</string>
+       <string>2. Auswahl</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="1">
-        <widget class="QGroupBox" name="groupBox_vehicles">
-         <property name="title">
-          <string>Fahrzeuge</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QScrollArea" name="scrollArea_vehicles">
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents_2">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>447</width>
-               <height>313</height>
-              </rect>
-             </property>
-            </widget>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QGroupBox" name="groupBox_qualifications">
          <property name="title">
@@ -63,8 +95,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>447</width>
-               <height>266</height>
+               <width>424</width>
+               <height>227</height>
               </rect>
              </property>
             </widget>
@@ -80,7 +112,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox">
+             <widget class="QSpinBox" name="numberComradsSpinBox">
               <property name="minimumSize">
                <size>
                 <width>75</width>
@@ -117,34 +149,31 @@
          </layout>
         </widget>
        </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QGroupBox" name="groupBox">
-      <property name="title">
-       <string>1. Konfigurationsdatei auswählen</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_5">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>öffnen ...</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+        <widget class="QGroupBox" name="groupBox_vehicles">
+         <property name="title">
+          <string>Fahrzeuge</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QScrollArea" name="scrollArea_vehicles">
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents_2">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>424</width>
+               <height>287</height>
+              </rect>
+             </property>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -157,7 +186,7 @@
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

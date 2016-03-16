@@ -14,9 +14,16 @@ class VehicleSpinBoxWidget : public QWidget
 public:
     explicit VehicleSpinBoxWidget(QSharedPointer<Vehicle> vehicle, QWidget *parent = 0);
 
+  QSharedPointer<Vehicle> vehicle() const;
+
+  QSpinBox *vehicleSpinBox() const;
+
 signals:
 
 public slots:
+private:
+  QSpinBox* m_vehicleSpinBox;
+  QSharedPointer<Vehicle> m_vehicle;
 };
 
 #endif // VEHICLESPINBOXWIDGET_H

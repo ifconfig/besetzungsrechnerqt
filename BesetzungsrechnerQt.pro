@@ -31,26 +31,28 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     dbmanager.cpp \
-    kamerad.cpp \
     qualification.cpp \
     vehicle.cpp \
     testdbwindow.cpp \
     qualificationsliderwidget.cpp \
     qualificationlist.cpp \
     vehiclelist.cpp \
-    vehiclespinboxwidget.cpp
+    vehiclespinboxwidget.cpp \
+    informationsfortestdbgeneration.cpp \
+    comrad.cpp
 
 HEADERS  += mainwindow.h \
     general.h \
     dbmanager.h \
-    kamerad.h \
     qualification.h \
     vehicle.h \
     testdbwindow.h \
     qualificationsliderwidget.h \
     qualificationlist.h \
     vehiclelist.h \
-    vehiclespinboxwidget.h
+    vehiclespinboxwidget.h \
+    informationsfortestdbgeneration.h \
+    comrad.h
 
 FORMS    += mainwindow.ui \
     testdbwindow.ui

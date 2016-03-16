@@ -51,23 +51,21 @@ void TestDbWindow::createQualificationSliders(QJsonObject configurationObject)
 
     QJsonArray qualificationsArray =  configurationObject["qualifications"].toArray();
 
-    QualificationList* qualiList = new QualificationList(qualificationsArray);
-
-    QHash <QString, QualificationSliderWidget*> sliderHashList;
+    m_qualiList = QSharedPointer<QualificationList>(new QualificationList(qualificationsArray));
 
     // show sliders
-    foreach (QSharedPointer<Qualification> quali, qualiList->getHashList())
+    foreach (QSharedPointer<Qualification> quali, m_qualiList->getHashList())
       {
         auto sliderWidget = new QualificationSliderWidget(quali, sliderArea);
-        sliderHashList.insert(quali->qualiShortName(), sliderWidget);
+        m_sliderHashList.insert(quali->qualiShortName(), sliderWidget);
         sliderArea->layout()->addWidget(sliderWidget);
       }
 
-    foreach(auto qualiSliderWidget, sliderHashList)
+    foreach(auto qualiSliderWidget, m_sliderHashList)
       {
         foreach(auto dependency, qualiSliderWidget->dependencies())
           {
-            qualiSliderWidget->setDependency(sliderHashList[dependency->qualiShortName()]);
+            qualiSliderWidget->setDependency(m_sliderHashList[dependency->qualiShortName()]);
           }
       }
 }
@@ -80,10 +78,40 @@ void TestDbWindow::createVehicleSpinBoxes(QJsonObject configurationObject)
     ui->scrollArea_vehicles->setWidget(spinBoxArea);
 
     QJsonArray vehiclesArray = configurationObject["vehicles"].toArray();
-    VehicleList* vehicleList = new VehicleList(vehiclesArray);
+    m_vehicleList = QSharedPointer<VehicleList>(new VehicleList(vehiclesArray));
 
-    foreach (QSharedPointer<Vehicle> vehicle, vehicleList->vehicles()) {
-        spinBoxArea->layout()->addWidget(new VehicleSpinBoxWidget(vehicle, spinBoxArea));
+    foreach (QSharedPointer<Vehicle> vehicle, m_vehicleList->vehicles())
+      {
+        VehicleSpinBoxWidget* vehicleSpinBoxWidget = new VehicleSpinBoxWidget(vehicle, spinBoxArea);
+        spinBoxArea->layout()->addWidget(vehicleSpinBoxWidget);
+        m_vehicleSpinBoxList.insert(vehicle->name(), vehicleSpinBoxWidget);
+      }
+}
 
+QList<Comrad> TestDbWindow::generateComradList(int numberComrads, QSharedPointer<QualificationList> qualiList)
+{
+
+}
+
+// generieren Button pressed
+void TestDbWindow::on_pushButton_2_clicked()
+{
+  // gather Qualification percentages
+  foreach (auto qualificationSliderWidget, m_sliderHashList)
+    {
+      m_qualiList->qualificationPercentages()->insert(
+            qualificationSliderWidget->qualification()->qualiShortName(),
+            qualificationSliderWidget->qualificationSlider()->value());
     }
+
+  // gather Vehicle number
+  foreach (auto vehicleSpinBox, m_vehicleSpinBoxList)
+    {
+      m_vehicleList->vehicleNumber()->insert(
+            vehicleSpinBox->vehicle()->name(),
+            vehicleSpinBox->vehicleSpinBox()->value());
+    }
+
+  QList<Comrad> comradList = generateComradList(ui->numberComradsSpinBox->value(), m_qualiList);
+
 }

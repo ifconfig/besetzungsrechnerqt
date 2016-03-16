@@ -15,6 +15,11 @@ QHash <QString, QSharedPointer<Qualification> >  QualificationList::getHashList(
   return m_qualificationHash;
 }
 
+QHash<QString, int>* QualificationList::qualificationPercentages()
+{
+  return &m_qualificationPercentages;
+}
+
 void QualificationList::getAndSetDependencies()
 {
   foreach (auto quali, m_qualificationHash)
