@@ -4,6 +4,7 @@
 #include <QList>
 #include <QJsonArray>
 #include <QJsonValue>
+#include <QHash>
 #include "qualification.h"
 
 
@@ -11,10 +12,11 @@ class QualificationList
 {
 public:
   QualificationList(QJsonArray qualificationsArray);
-  QList <QSharedPointer<Qualification> >  getList();
+  QHash <QString, QSharedPointer<Qualification> >  getHashList();
 
 private:
-  QList <QSharedPointer<Qualification> > m_qualifications;
+  QHash <QString, QSharedPointer<Qualification> > m_qualificationHash;
+
   void getAndSetDependencies();
 };
 

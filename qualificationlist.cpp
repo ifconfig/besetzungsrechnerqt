@@ -4,26 +4,24 @@ QualificationList::QualificationList(QJsonArray qualificationsArray)
 {
   foreach(const QJsonValue & qualification, qualificationsArray){
       QJsonObject qualiObj = qualification.toObject();
-      auto newQuali = QSharedPointer<Qualification>(new Qualification(qualiObj));
-      m_qualifications.append(newQuali);
+      QSharedPointer<Qualification> newQuali = QSharedPointer<Qualification>(new Qualification(qualiObj));
+      m_qualificationHash.insert(newQuali->qualiShortName(), newQuali);
     }
   getAndSetDependencies();
 }
 
-QList <QSharedPointer<Qualification> >  QualificationList::getList()
+QHash <QString, QSharedPointer<Qualification> >  QualificationList::getHashList()
 {
-  return m_qualifications;
+  return m_qualificationHash;
 }
 
 void QualificationList::getAndSetDependencies()
 {
-  foreach (auto firstQuali, m_qualifications)
+  foreach (auto quali, m_qualificationHash)
     {
-      foreach (auto secondQuali, m_qualifications)
+      foreach(auto dependency, quali->dependencies())
         {
-          if(secondQuali->hasDependencyShortName(firstQuali->qualiShortName())){
-              secondQuali->appendDependency(firstQuali);
-            }
+          quali->appendDependency(m_qualificationHash[dependency->qualiShortName()]);
         }
     }
 }

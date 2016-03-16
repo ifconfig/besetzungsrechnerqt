@@ -53,26 +53,23 @@ void TestDbWindow::createQualificationSliders(QJsonObject configurationObject)
 
     QualificationList* qualiList = new QualificationList(qualificationsArray);
 
-    QList <QualificationSliderWidget*> sliderList;
+    QHash <QString, QualificationSliderWidget*> sliderHashList;
+
     // show sliders
-    foreach (QSharedPointer<Qualification> quali, qualiList->getList())
+    foreach (QSharedPointer<Qualification> quali, qualiList->getHashList())
       {
         auto sliderWidget = new QualificationSliderWidget(quali, sliderArea);
-        sliderList.append(sliderWidget);
+        sliderHashList.insert(quali->qualiShortName(), sliderWidget);
         sliderArea->layout()->addWidget(sliderWidget);
       }
 
-    // populate dependencies
-    for(int depIndex=0; depIndex<sliderList.size(); ++depIndex)
+    foreach(auto qualiSliderWidget, sliderHashList)
       {
-        for(int masterIndex=0; masterIndex<sliderList.size(); ++masterIndex)
+        foreach(auto dependency, qualiSliderWidget->dependencies())
           {
-            if(sliderList.at(depIndex)->isDependentOf(sliderList.at(masterIndex)))
-              {
-                sliderList.at(depIndex)->setDependency(sliderList.at(masterIndex));
-              }
+            qualiSliderWidget->setDependency(sliderHashList[dependency->qualiShortName()]);
           }
-    }
+      }
 }
 
 void TestDbWindow::createVehicleSpinBoxes(QJsonObject configurationObject)

@@ -8,6 +8,7 @@
 #include <QScrollArea>
 
 #include <QFile>
+#include <QHash>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QString>
