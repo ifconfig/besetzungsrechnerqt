@@ -83,10 +83,7 @@ void TestDbWindow::createVehicleSpinBoxes(QJsonObject configurationObject)
       }
 }
 
-QList<Comrad> TestDbWindow::generateComradList(int numberComrads, QSharedPointer<QualificationList> qualiList)
-{
 
-}
 
 // generieren Button pressed
 void TestDbWindow::on_pushButton_2_clicked()
@@ -107,7 +104,4 @@ void TestDbWindow::on_pushButton_2_clicked()
             vehicleSpinBox->vehicle()->name(),
             vehicleSpinBox->vehicleSpinBox()->value());
     }
-
-  QList<Comrad> comradList = generateComradList(ui->numberComradsSpinBox->value(), m_qualiList);
-
 }

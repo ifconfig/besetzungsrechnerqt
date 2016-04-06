@@ -51,7 +51,6 @@ private:
   QHash<QString, VehicleSpinBoxWidget*> m_vehicleSpinBoxList;
   void createQualificationSliders(QJsonObject configurationObject);
   void createVehicleSpinBoxes(QJsonObject configurationObject);
-  QList<Comrad> generateComradList(int numberComrads, QSharedPointer<QualificationList> qualiList);
 };
 
 #endif // TESTDBWINDOW_H

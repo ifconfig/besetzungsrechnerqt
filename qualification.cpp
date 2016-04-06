@@ -30,31 +30,6 @@ QString Qualification::qualiShortName() const
   return m_qualiShortName;
 }
 
-bool Qualification::isDependencyOf(Qualification *other)
-{
-  if(other->qualiShortName() == m_qualiShortName)
-    {
-      return true;
-    }else
-    {
-      return false;
-    }
-}
-
-
-
-bool Qualification::hasDependencyShortName(QString shortName)
-{
-  // Return false because its, the same Qualification
-  if(m_qualiShortName == shortName) return false;
-  if(m_depShortName == shortName){
-      return true;
-    }else{
-      return false;
-    }
-
-}
-
 int Qualification::defaultValue() const
 {
   return m_defaultValue;
