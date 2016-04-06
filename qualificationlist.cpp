@@ -24,9 +24,10 @@ void QualificationList::getAndSetDependencies()
 {
   foreach (auto quali, m_qualificationHash)
     {
-      foreach(auto dependency, quali->dependencies())
+      if(quali->depShortName().size() > 0)
         {
-          quali->appendDependency(m_qualificationHash[dependency->qualiShortName()]);
+          quali->setDependency(m_qualificationHash[quali->depShortName()]);
+          m_qualificationHash[quali->depShortName()]->addDependencyFrom(quali);
         }
     }
 }

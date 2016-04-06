@@ -9,10 +9,9 @@ Qualification::Qualification(QJsonObject qualiObj)
 {
   m_qualiName = qualiObj["name"].toString();
   m_qualiShortName = qualiObj["short"].toString();
-  foreach(const QJsonValue shortName, qualiObj["dependencies"].toArray())
-    {
-      m_depShortNames.append(shortName.toString());
-    }
+  m_depShortName = qualiObj["dependency"].toString();
+  m_qualiID = 0;
+
   if(qualiObj["default_value"].toInt())
     {
       m_defaultValue = qualiObj["default_value"].toInt();
@@ -42,40 +41,43 @@ bool Qualification::isDependencyOf(Qualification *other)
     }
 }
 
-void Qualification::appendDepShortName(QString depShortName)
-{
-  m_depShortNames.append(depShortName);
-}
+
 
 bool Qualification::hasDependencyShortName(QString shortName)
 {
   // Return false because its, the same Qualification
   if(m_qualiShortName == shortName) return false;
-
-  foreach (const QString depShortName, m_depShortNames) {
-      if(depShortName == shortName) return true;
+  if(m_depShortName == shortName){
+      return true;
+    }else{
+      return false;
     }
-  return false;
-}
 
-void Qualification::appendDependency(QSharedPointer<Qualification> dependency)
-{
-  m_dependencies.append(dependency);
-}
-
-QList<QString> Qualification::depShortNames() const
-{
-  return m_depShortNames;
-}
-
-QList <QSharedPointer<Qualification> > Qualification::dependencies() const
-{
-  return m_dependencies;
 }
 
 int Qualification::defaultValue() const
 {
   return m_defaultValue;
+}
+
+void Qualification::setDependency(const QSharedPointer<Qualification> &dependency)
+{
+  m_dependency = dependency;
+}
+
+QString Qualification::depShortName() const
+{
+  return m_depShortName;
+}
+
+QHash<QString, QSharedPointer<Qualification> > Qualification::getDependecyFrom() const
+{
+  return m_dependecyFrom;
+}
+
+void Qualification::addDependencyFrom(QSharedPointer<Qualification> dependentQualification)
+{
+  m_dependecyFrom.insert(dependentQualification->qualiShortName(), dependentQualification);
 }
 
 

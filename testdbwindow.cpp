@@ -54,6 +54,7 @@ void TestDbWindow::createQualificationSliders(QJsonObject configurationObject)
     m_qualiList = QSharedPointer<QualificationList>(new QualificationList(qualificationsArray));
 
     // show sliders
+
     foreach (QSharedPointer<Qualification> quali, m_qualiList->getHashList())
       {
         auto sliderWidget = new QualificationSliderWidget(quali, sliderArea);
@@ -61,13 +62,7 @@ void TestDbWindow::createQualificationSliders(QJsonObject configurationObject)
         sliderArea->layout()->addWidget(sliderWidget);
       }
 
-    foreach(auto qualiSliderWidget, m_sliderHashList)
-      {
-        foreach(auto dependency, qualiSliderWidget->dependencies())
-          {
-            qualiSliderWidget->setDependency(m_sliderHashList[dependency->qualiShortName()]);
-          }
-      }
+
 }
 
 void TestDbWindow::createVehicleSpinBoxes(QJsonObject configurationObject)
@@ -96,6 +91,7 @@ QList<Comrad> TestDbWindow::generateComradList(int numberComrads, QSharedPointer
 // generieren Button pressed
 void TestDbWindow::on_pushButton_2_clicked()
 {
+
   // gather Qualification percentages
   foreach (auto qualificationSliderWidget, m_sliderHashList)
     {

@@ -16,21 +16,23 @@ public:
 
   QString qualiShortName() const;
   bool isDependencyOf(Qualification* other);
-  void appendDepShortName(QString depShortName);
   bool hasDependencyShortName(QString shortName);
-  void appendDependency(QSharedPointer<Qualification> dependency);
-
-  QList<QString> depShortNames() const;
-
-  QList <QSharedPointer<Qualification> > dependencies() const;
 
   int defaultValue() const;
+
+  void setDependency(const QSharedPointer<Qualification> &dependency);
+
+  QString depShortName() const;
+
+  QHash<QString, QSharedPointer<Qualification> > getDependecyFrom() const;
+  void addDependencyFrom(QSharedPointer<Qualification> dependentQualification);
 
 private:
   QString m_qualiName;
   QString m_qualiShortName;
-  QList <QSharedPointer<Qualification> > m_dependencies;
-  QList <QString> m_depShortNames;
+  QSharedPointer<Qualification> m_dependency;
+  QHash<QString, QSharedPointer<Qualification> > m_dependecyFrom;
+  QString m_depShortName;
   int m_qualiID;
   int m_number;
   int m_defaultValue;

@@ -18,19 +18,16 @@ class QualificationSliderWidget : public QWidget
 public:
   explicit QualificationSliderWidget(QWidget *parent = 0);
   QualificationSliderWidget(QSharedPointer<Qualification> quali, QWidget *parent = 0);
-  QList <QSharedPointer<Qualification> > dependencies();
-  bool isDependentOf(const QualificationSliderWidget* masterWidget);
-  void setDependency(QualificationSliderWidget* masterWidget);
 
   QSharedPointer<Qualification> qualification() const;
 
   QSlider *qualificationSlider() const;
 
 signals:
-  void dependencyValueChanged(int value);
+  //void dependencyValueChanged(int value);
 
 public slots:
-  void setDependentValue(int value);
+  //void setDependentValue(int value);
   void sliderValueChanged(int value);
 
 private:
@@ -38,7 +35,6 @@ private:
   QLabel* m_qualificationNameLabel;
   QSlider* m_qualificationSlider;
   QLabel* m_qualificationSliderPercentage;
-  QList <QualificationSliderWidget*> m_dependencyWidgets;
 };
 
 #endif // QUALIFICATIONSLIDERWIDGET_H
